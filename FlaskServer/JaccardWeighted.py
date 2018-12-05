@@ -131,7 +131,7 @@ class JaccardWeighted:
 
 
 if __name__ == '__main__':
-    jaccard = JaccardWeighted(".\data\patient_data\\", ".\data\weight.json", '人口学信息', 'gb2312')
+    jaccard = JaccardWeighted('data/patient_data/', 'data/weight.json', '人口学信息', 'gb2312')
     
     print(jaccard.similarity_weighted('ZY130000306099', 'ZY220000306099'))  # 查找两个患者的相似度
 

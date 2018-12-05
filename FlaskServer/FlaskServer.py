@@ -1,4 +1,4 @@
-from flask import Flask, url_for
+from flask import Flask, url_for, Response, jsonify
 from flask import request
 from flask import render_template
 import pandas as pd
@@ -72,13 +72,14 @@ def hello(name=None):
 #     return render_template('login.html', error=error)
 
 
-@app.route('/similarpatient/<inpatientid>')
+@app.route('/similarpatient/<inpatientid>', methods=['GET', 'POST'])
 def search_similar_patient(inpatientid=None):
     jaccard = JaccardWeighted('data/patient_data/', 'data/weight.json', '人口学信息', 'gb2312')
     # similar_dict = jaccard.similarity_weighted_topn('ZY130000306099', 3)
     similar_dict = jaccard.similarity_weighted_topn(inpatientid, 3)
-    return similar_dict
-
+    # return Response(json.dumps(similar_dict), mimetype='application/json')
+    return jsonify(similar_dict)
 
 if __name__ == '__main__':
-    app.run()
+    # app.run(host='192.168.0.162',port=8080, ssl_context='adhoc')
+    app.run(host='192.168.0.162',port=8080)

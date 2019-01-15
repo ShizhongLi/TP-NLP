@@ -135,4 +135,4 @@ if __name__ == '__main__':
     
     print(jaccard.similarity_weighted('ZY130000306099', 'ZY220000306099'))  # 查找两个患者的相似度
 
-    print(jaccard.similarity_weighted_topn('ZY130000306099', 10))  # 查找某个患者最相似的Top10患者
+    # print(jaccard.similarity_weighted_topn('ZY130000306099', 10))  # 查找某个患者最相似的Top10患者
